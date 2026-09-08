@@ -1,3 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@source "./";
+
+@theme {
+    /* Background Colors */
+    --color-paper: #efe7db;
+    --color-card: #faf5ea;
+    --color-inset: #f4ecdd;
+    --color-recessed: #e9e0cf;
+    --color-active: #f8efe2;
+    
+    /* Text Colors */
+    --color-primary: #241f19;
+    --color-strong-label: #4a4137;
+    --color-field-label: #6d6152;
+    --color-caption: #8b7c66;
+
+    /* Signal Colors */
+    --color-good: #5c7a4a;
+    --color-caution: #b8862f;
+    --color-fault: #9c4a3c;
+
+    /* Other */
+    --color-divider: #d3c5ac;
+
+    --font-plex: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-plex-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@utility bg-paper-lines {
+  background-image: repeating-linear-gradient(0deg, rgba(90,70,40,0.02) 0 1px, transparent 1px 5px);
+}
+
+/* Leaflet puts both classes on the same element, so these must be chained (no
+   descendant space), and this file loads after leaflet.css so it wins the tie. */
+.leaflet-control-attribution.leaflet-control {
+    border-top: 1px solid var(--color-divider);
+    border-left: 1px solid var(--color-divider);
+    background-color: var(--color-card);
+    font-family: var(--font-plex-mono);
+    font-size: 0.625rem;
+}
+
+.drone-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #b5482f;          /* a warm ink tone that reads on paper tiles */
+  border: 2px solid #fff8ef;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
+}

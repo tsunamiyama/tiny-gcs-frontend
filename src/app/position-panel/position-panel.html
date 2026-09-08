@@ -1,0 +1,21 @@
+@let pos = position();
+
+<div class="flex flex-col bg-card border border-divider p-4 gap-2 h-full w-full">
+    <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">POSITION</span>
+    <div class="flex justify-between items-center border-b border-dotted border-divider h-full w-full">
+        <span class="font-plex font-normal text-xs text-field-label">Latitude</span>
+        <span class="font-plex-mono font-normal text-base">{{ pos ? (pos.lat | number: '1.4-4') : '—' }}</span>
+    </div>
+    <div class="flex justify-between items-center border-b border-dotted border-divider h-full w-full">
+        <span class="font-plex font-normal text-xs text-field-label">Longitude</span>
+        <span class="font-plex-mono font-normal text-base">{{ pos ? (pos.lon | number: '1.4-4') : '—' }}</span>
+    </div>
+    <div class="flex justify-between items-center border-b border-dotted border-divider h-full w-full">
+        <span class="font-plex font-normal text-xs text-field-label">Altitude MSL</span>
+        <span class="font-plex-mono font-normal text-base">{{ pos ? (pos.abs_alt | number: '1.1-1') + ' m' : '—' }}</span>
+    </div>
+    <div class="flex justify-between items-center h-full w-full">
+        <span class="font-plex font-normal text-xs text-field-label">Altitude AGL</span>
+        <span class="font-plex-mono font-normal text-base">{{ pos ? (pos.rel_alt | number: '1.1-1') + ' m' : '—' }}</span>
+    </div>
+</div>

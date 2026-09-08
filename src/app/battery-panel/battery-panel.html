@@ -1,0 +1,18 @@
+@let bat = battery();
+
+<div class="flex flex-col bg-card border border-divider p-4 gap-2 h-full w-full">
+    <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">BATTERY</span>
+    <div class="flex flex-col gap-2 h-fit w-full">
+        <div class="flex items-baseline gap-2 h-fit w-full">
+            <span class="font-plex-mono font-normal text-4xl text-primary">{{ bat ? (bat.remaining | number: '1.0-0') + '%' : '—' }}</span>
+            <span class="font-plex font-normal text-xs text-caption">remaining</span>
+        </div>
+        <div class="bg-recessed border border-divider h-2.5 w-full">
+            <div class="bg-good h-full" [style.width.%]="bat ? bat.remaining : 0"></div>
+        </div>
+        <div class="flex flex-col h-fit w-full">
+            <span class="font-plex font-normal text-xs text-caption">Voltage</span>
+            <span class="font-plex-mono font-normal text-sm text-primary">{{ bat ? (bat.voltage | number: '1.2-2') + ' V' : '—' }}</span>
+        </div>
+    </div>
+</div>

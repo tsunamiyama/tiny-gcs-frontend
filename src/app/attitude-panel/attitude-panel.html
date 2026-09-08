@@ -1,0 +1,33 @@
+@let att = attitude();
+
+<div class="flex flex-col bg-card border border-divider p-4 gap-2 h-full w-full">
+    <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">ATTITUDE</span>
+    <div class="flex items-center gap-8 h-fit w-full">
+        <div class="relative w-40 h-40 rounded-full overflow-hidden border border-[#c9b99e] bg-[#e8dfcd] shrink-0">
+            <div class="absolute left-[-50%] top-[-50%] w-[200%] h-[200%] transition-transform duration-100 ease-linear" [style.transform]="horizonTransform()">
+                <div class="absolute inset-x-0 top-0 bottom-1/2 bg-[#dfe0d2]"></div>
+                <div class="absolute inset-x-0 top-1/2 bottom-0 bg-[#c9ab86]"></div>
+                <div class="absolute inset-x-0 top-1/2 h-px bg-[#5c4a33]"></div>
+                <!-- Pitch ladder: 26px = 10° at the component's 2.6px-per-degree scale. -->
+                <div class="absolute left-1/2 -translate-x-1/2 w-[38px] top-[calc(50%-26px)] h-px bg-[#5c4a33]/45"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 w-[38px] top-[calc(50%+26px)] h-px bg-[#5c4a33]/45"></div>
+            </div>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[74px] h-px bg-[#a2543a]"></div>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[5px] h-[5px] rounded-full bg-[#a2543a]"></div>
+        </div>
+        <div class="flex flex-col gap-2 h-fit w-fit">
+            <div class="flex flex-col h-fit w-full">
+                <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">ROLL</span>
+                <span class="font-plex-mono font-normal text-primary text-2xl">{{ att ? (att.roll | number: '1.1-1') + '°' : '—' }}</span>
+            </div>
+            <div class="flex flex-col h-fit w-full">
+                <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">PITCH</span>
+                <span class="font-plex-mono font-normal text-primary text-2xl">{{ att ? (att.pitch | number: '1.1-1') + '°' : '—' }}</span>
+            </div>
+            <div class="flex flex-col h-fit w-full">
+                <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">YAW</span>
+                <span class="font-plex-mono font-normal text-primary text-2xl">{{ att ? (att.yaw | number: '1.1-1') + '°' : '—' }}</span>
+            </div>
+        </div>
+    </div>
+</div>
