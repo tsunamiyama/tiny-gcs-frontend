@@ -8,8 +8,16 @@
     <div class="flex justify-center items-center gap-5 h-fit w-fit">
       <div class="flex justify-center text-center items-center bg-card border rounded-xs border-divider gap-2 py-1 px-3 h-fit w-fit">
         <div class="flex h-2 w-2 rounded-full {{ linkDisplay().dot }}"></div>
-        <span class="font-plex font-medium text-xs text-strong-label tracking-[0.14em]">{{ linkDisplay().label }}</span>
+        <span class="font-plex font-medium text-xs text-strong-label tracking-[0.14em]">{{ sourceMode() | uppercase }}</span>
       </div>
+
+      <button
+        type="button"
+        [disabled]="sourceSwitching()"
+        (click)="toggleSource()"
+        class="flex justify-center text-center items-center cursor-pointer bg-card border rounded-xs border-divider gap-2 py-1 px-3 h-fit w-fit disabled:opacity-50 disabled:cursor-not-allowed">
+        <span class="font-plex font-medium text-xs text-strong-label tracking-[0.14em]">TOGGLE SOURCE</span>
+      </button>
 
       <div class="flex flex-col text-end h-fit w-fit">
         <span class="font-plex-mono font-normal text-xs text-primary">{{ now() | date: 'HH:mm:ss' }}</span>
@@ -21,16 +29,7 @@
   <div class="flex gap-5 my-5 h-full w-full">
     <div class="flex flex-2 flex-col gap-5 h-fit w-full">
       <app-route-panel class="h-fit w-full"></app-route-panel>
-      <div class="flex gap-5 h-fit w-full">
-        <div class="flex flex-col flex-1 bg-card border border-divider p-4 gap-2 h-fit w-full">
-          <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">FLIGHT MODE</span>
-          <span class="font-plex-mono font-medium text-2xl text-primary">{{ (flightMode() | uppercase) || '—' }}</span>
-        </div>
-        <div class="flex flex-col flex-1 bg-card border border-divider p-4 gap-2 h-fit w-full">
-          <span class="font-plex font-semibold text-[0.625em] text-strong-label tracking-[0.16em]">ARM STATE</span>
-          <span class="font-plex-mono font-medium text-2xl text-primary">{{ armed() === null ? '—' : (armed() ? 'ARMED' : 'DISARMED') }}</span>
-        </div>
-      </div>
+      <app-commands-panel class="h-fit w-full"></app-commands-panel>
     </div>
     <div class="flex flex-col flex-1 gap-5 h-full w-full">
       <app-position-panel class="h-fit w-full" [position]="position()"></app-position-panel>
